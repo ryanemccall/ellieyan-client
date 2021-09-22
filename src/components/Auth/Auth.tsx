@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Login from './Login'
 import Register from './Register';
-import  {Link} from 'react-router-dom';
+import  {Link, BrowserRouter as Router} from 'react-router-dom';
 
 type AuthProps = {
     updateToken: (newToken: string) => void
@@ -58,9 +58,15 @@ export default class Auth extends Component<AuthProps, AuthState> {
                 <div>
                     {this.Authorization()}
                     {this.state.login ? (
-                        <Link to='' onClick={this.loginToggle}>Register an account!</Link>
+                        <Router>
+                            <Link to='' onClick={this.loginToggle}>Register an account!</Link>
+                        </Router>
+                       
                     ) : (
-                        <Link to='' onClick={this.loginToggle}>Login!</Link>
+                        <Router>
+                             <Link to='' onClick={this.loginToggle}>Login!</Link>
+                        </Router>
+                       
                     )}
                 </div>
             </div>

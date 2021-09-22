@@ -1,26 +1,96 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Auth from './components/Auth/Auth';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Footer from './components/Site/Footer';
+import Home from './components/Site/Home';
+import AdminView from './components/Site/AdminView';
+import SiteNav from './components/Site/SiteNav';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+type userTypes = {
+  token: string
+  Role: string
 }
 
-export default App;
+export default class App extends Component<{}, userTypes> {
+  constructor(props: userTypes){
+    super(props)
+    this.state = {
+      token: '',
+      Role: '',
+    }
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('sessionToken')) {
+      this.setState({
+        token: localStorage.getItem('sessionToken')!,
+      })
+    }
+    if (localStorage.getItem('Role')) {
+      this.setState({ Role: localStorage.getItem('Role')! })
+    }
+  }
+
+  updateIsAdmin = (newRole: string) => {
+    localStorage.setItem('Role', newRole)
+    this.setState({ Role: newRole })
+  }
+
+  updateToken = (newToken: string) => {
+    localStorage.setItem('sessionToken', newToken)
+    this.setState({ token: newToken})
+  }
+
+  clearToken = () => {
+    localStorage.clear()
+    this.setState({ token: '', Role: ''})
+  }
+
+  protectedAdminViews = () => {
+    return localStorage.getItem('Role') === 'admin' ? (
+      <AdminView token={this.state.token} />
+    ) : (
+      <Home token={this.state.token} />
+    )
+  }
+
+  protectedViews = () => {
+    return this.state.token === localStorage.getItem('sessionToken') ? (
+      <Home token={this.state.token} />
+    ) : (
+      <Auth updateToken={this.updateToken} updateIsAdmin={this.updateIsAdmin} />
+    )
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        {this.state.token  && (
+          <SiteNav
+            logout={this.clearToken}
+            token={this.state.token}
+            Role={this.state.Role}
+            />
+        )}
+        <Router>
+        <Switch>
+          <Route exact path='/'>
+            {this.protectedViews}
+          </Route>
+          {/* <Route exact path='/post'>
+            <PostFeed token={this.state.token} />
+          </Route> */}
+          <Route exact path='/admin' component={AdminView}>
+            {this.protectedAdminViews}
+          </Route>
+        </Switch> 
+        </Router>
+        <Footer/>
+      </div>
+    )
+  }
+}
+
+
