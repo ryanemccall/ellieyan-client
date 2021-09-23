@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CreatePost from './CreatePost';
-//import UpdatePost from './UpdatePost';
+import UpdatePost from './UpdatePost';
 
 type acceptedProps = {
     token: string
@@ -68,8 +68,8 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
         return (
             <div>
                 <CreatePost token={this.props.token} getPost={this.getPost} />
-                {/* {this.state.updateOn ? (
-                <updatePost
+                {this.state.updateOn ? (
+                <UpdatePost
                 token={this.props.token}
                 getPost={this.getPost}
                 PostEdit={this.state.updatePost}
@@ -78,7 +78,7 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
                 />
             ): (
                 <></>
-            )} */}
+            )}
             </div>
             
         )

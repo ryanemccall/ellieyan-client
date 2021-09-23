@@ -78,7 +78,7 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
                             value={this.state.content}
                             name='content'
                             placeholder='What do you think about this game?'
-                            onChange={this.handleChange}
+                            onChange={e => this.setState({ content: e.target.value })}
                             />
                         </label>
                     </div>
