@@ -57,6 +57,22 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
         this.props.updateOff()
     }
 
+    deletePost = (post: any) => {
+        try{
+            fetch(`http://localhost:3000/post/delete/${post.id}`, {
+                method: 'DELETE',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer {this.props.token}`
+                })
+            })
+            return this.props.getPost()
+        } catch (err) {
+            console.log(err)
+        }
+    
+    }
+
     render() {
         return (
             <div>
@@ -95,7 +111,12 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                             Update
                         </button>
                         <button
-                        onClick={this.toggle}>Cancel</button>
+                        onClick={(id: any) => {
+                            this.deletePost(id)
+                            this.toggle()
+                        }}>
+                            Delete Post
+                        </button>
                     </ModalFooter>
                 </Modal>
             </div>

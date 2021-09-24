@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CreatePost from './CreatePost';
+import PostFeedMap from './PostFeedMap';
 import UpdatePost from './UpdatePost';
 
 type acceptedProps = {
@@ -68,6 +69,13 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
         return (
             <div>
                 <CreatePost token={this.props.token} getPost={this.getPost} />
+                <PostFeedMap
+                token={this.props.token}
+                postFeed={this.state.postFeed}
+                getPost={this.getPost}
+                PostEdit={this.PostEdit}
+                updateOn={this.updateOn}
+                />
                 {this.state.updateOn ? (
                 <UpdatePost
                 token={this.props.token}

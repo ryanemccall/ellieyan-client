@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -36,9 +36,12 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
         return localStorage.getItem('sessionToken') === null ? (
             ''
         ) : (
-            <Link to='/'>
+            <Router>
+                <Link to='/'>
                 <button onClick={this.props.logout}>Logout</button>
             </Link>
+            </Router>
+            
         )
     }
 
@@ -55,32 +58,40 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
             <div>
                 <Navbar color='dark' dark expand='md'>
                     <NavbarBrand>
+                        <Router>
                         <Link to='/'>
                             <img src={Logo} alt='logo' height='28px' width='28px' />
                         </Link>
+                        </Router>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav navbar>
                             <NavItem>
                                 <NavLink>
-                                    <Link to='/'>
+                                   <Router>
+                                        <Link to='/'>
                                         Home
                                     </Link>
+                                    </Router>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink>
+                                    <Router>
                                     <Link to='/post'>
                                         myFeed
                                     </Link>
+                                    </Router>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink>
+                                    <Router>
                                     <Link to='/admin'>
                                         {this.adminNavPanel()}
                                     </Link>
+                                    </Router>
                                 </NavLink>
                             </NavItem>
                         </Nav>

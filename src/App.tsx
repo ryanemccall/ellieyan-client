@@ -6,7 +6,7 @@ import Footer from './components/Site/Footer';
 import Home from './components/Site/Home';
 import AdminView from './components/Site/AdminView';
 import SiteNav from './components/Site/SiteNav';
-
+import PostIndex from './components/User/Post/PostIndex';
 
 type userTypes = {
   token: string
@@ -79,9 +79,9 @@ export default class App extends Component<{}, userTypes> {
           <Route exact path='/'>
             {this.protectedViews}
           </Route>
-          {/* <Route exact path='/post'>
-            <PostFeed token={this.state.token} />
-          </Route> */}
+           <Route exact path='/post'>
+            <PostIndex token={this.state.token} />
+          </Route>
           <Route exact path='/admin' component={AdminView}>
             {this.protectedAdminViews}
           </Route>
