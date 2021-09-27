@@ -1,0 +1,23 @@
+body{
+    background-color: #4BC3B5;
+    background-size: 100vh;
+    color:#1C2C54;
+    font-family: fantasy;
+}
+
+.subTitle {
+    margin-bottom: 75px;
+    font-size: xx-large;
+}
+
+.loginLink {
+    color: #D175B7;
+    text-decoration: none;
+
+}
+
+.loginLink:hover {
+    color: #F4F4F9;
+    text-decoration: none;
+}
+

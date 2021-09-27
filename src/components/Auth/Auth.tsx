@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Login from './Login'
+import logo  from '../../assests/ellieyan.svg'
+import './Front.css'
 import Register from './Register';
 import  {Link, BrowserRouter as Router} from 'react-router-dom';
 
@@ -52,19 +54,19 @@ export default class Auth extends Component<AuthProps, AuthState> {
         return(
             <div>
                 <div>
-                    <h1>Welcome to ELLIEYAN</h1>
-                    <h3>The social media platform for gamers</h3>
+                    <img className='logo' src={logo} alt='logo'/>
+                    <h2 className='subTitle'>The social media platform for gamers</h2>
                 </div>
                 <div>
                     {this.Authorization()}
                     {this.state.login ? (
                         <Router>
-                            <Link to='' onClick={this.loginToggle}>Register an account!</Link>
+                            <Link className='loginLink' to='' onClick={this.loginToggle}>Register an account!</Link>
                         </Router>
                        
                     ) : (
                         <Router>
-                             <Link to='' onClick={this.loginToggle}>Login!</Link>
+                             <Link className='loginLink' to='' onClick={this.loginToggle}>Login!</Link>
                         </Router>
                        
                     )}

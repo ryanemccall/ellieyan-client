@@ -27,8 +27,10 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
             const post = await fetch(`http://localhost:3000/post/`, {
                 method: 'POST',
                 body: JSON.stringify({
-                    postTitle: this.state.postTitle,
-                    content: this.state.content
+                    post: {
+                        postTitle: this.state.postTitle,
+                        content: this.state.content,
+                    }
                 }),
                 headers: new Headers({
                     'Content-Type': 'application/json',

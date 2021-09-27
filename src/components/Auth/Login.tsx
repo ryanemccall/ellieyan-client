@@ -50,14 +50,16 @@ export default class Login extends Component<AuthProps, LoginState>{
 
     render() {
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className='login'>
+                <form onSubmit={this.handleSubmit} className='space-y-10'>
                     <div>
                         <label htmlFor='username'>
                             <input 
                             id='username'
                             required
                             type='username'
+                            className='w-full border-2 border-transparent
+                            p-2 rounded outline-none focus:border-purple-500'
                             placeholder='Username'
                             name='username'
                             onChange={this.handleChange}
