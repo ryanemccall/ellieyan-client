@@ -5,19 +5,26 @@ body{
     font-family: fantasy;
 }
 
-.subTitle {
-    margin-bottom: 75px;
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.subtitle {
+    margin-bottom: 40px;
     font-size: xx-large;
 }
 
 .loginLink {
-    color: #D175B7;
+    color: #F4F4F9;
     text-decoration: none;
 
 }
 
 .loginLink:hover {
-    color: #F4F4F9;
+    color: #D175B7;
     text-decoration: none;
 }
 

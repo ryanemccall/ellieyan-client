@@ -50,16 +50,15 @@ export default class Login extends Component<AuthProps, LoginState>{
 
     render() {
         return(
-            <div className='login'>
-                <form onSubmit={this.handleSubmit} className='space-y-10'>
+            <div className='w-full max-w-xs m-auto bg-green-100 rounded p-5'>
+                <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label htmlFor='username'>
+                        <label className='block mb-2 text-indigo-500' htmlFor='username'>
                             <input 
                             id='username'
                             required
                             type='username'
-                            className='w-full border-2 border-transparent
-                            p-2 rounded outline-none focus:border-purple-500'
+                            className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300'
                             placeholder='Username'
                             name='username'
                             onChange={this.handleChange}
@@ -67,10 +66,11 @@ export default class Login extends Component<AuthProps, LoginState>{
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='password'>
+                        <label className='block mb-2 text-indigo-500' htmlFor='password'>
                             <input
                             id='password'
                             required
+                            className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300'
                             type='password'
                             placeholder='Password'
                             pattern='^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$'
@@ -82,7 +82,7 @@ export default class Login extends Component<AuthProps, LoginState>{
                             />
                         </label>
                     </div>
-                    <button type='submit'>Login</button>
+                    <button className='bg-green-700 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full' type='submit'>Login</button>
                 </form>
             </div>
         )

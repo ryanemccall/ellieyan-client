@@ -6,6 +6,8 @@ type acceptedProps = {
     token: string
     updateOff: () => void
     getPost: () => Promise<any>
+    getAllPost: () => Promise<any>
+    deletePost: (post: any) => Promise<any>
     PostEdit: { [key: string]: any }
     isOpen: boolean
 }
@@ -19,8 +21,8 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
         super(props)
         this.state = {
             post: [],
-            postTitle: '',
-            content: '',
+            postTitle: this.props.PostEdit.postTitle,
+            content: this.props.PostEdit.content,
             ModalOpen: true
         }
     }
@@ -34,8 +36,10 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                     Authorization: `Bearer ${this.props.token}`,
                 }),
                 body: JSON.stringify({
-                    postTitle: this.props.PostEdit.postTitle,
-                    content: this.props.PostEdit.content,
+                    post: {
+                        postTitle: this.state.postTitle,
+                        content: this.state.content,
+                    }
                 })
             })
             await updatedPost.json()
@@ -57,22 +61,6 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
         this.props.updateOff()
     }
 
-    deletePost = (post: any) => {
-        try{
-            fetch(`http://localhost:3000/post/delete/${post.id}`, {
-                method: 'DELETE',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer {this.props.token}`
-                })
-            })
-            return this.props.getPost()
-        } catch (err) {
-            console.log(err)
-        }
-    
-    }
-
     render() {
         return (
             <div>
@@ -86,7 +74,7 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                                 type='text'
                                 value={this.state.postTitle}
                                 placeholder='Title'
-                                onChange={this.handleChange}
+                                onChange={e => this.setState({ postTitle: e.target.value })}
                                 />
                             </label>
                         </div>
@@ -111,8 +99,8 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                             Update
                         </button>
                         <button
-                        onClick={(id: any) => {
-                            this.deletePost(id)
+                        onClick={(post: any) => {
+                            this.props.deletePost(post)
                             this.toggle()
                         }}>
                             Delete Post

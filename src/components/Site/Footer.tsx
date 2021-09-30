@@ -4,7 +4,7 @@ export default class Footer extends Component {
     render() {
         return (
             <div>
-                <p> &copy; 2021, Created by Ryan M.</p>
+                <p className='text-sm text-black text-center fixed inset-x-0 bottom-0'> &copy; 2021, Created by Ryan M.</p>
             </div>
         )
     }

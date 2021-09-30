@@ -4,13 +4,17 @@ import { PostState } from './CreatePost';
 type acceptedProps = {
     token: string
     postFeed: Array<object>
+    commentFeed: Array<object>
     getPost: () => Promise<any>
+    getAllPost: () => Promise<any>
     PostEdit: (post: string) => void
+    PostComment: (comment: string) => void
     updateOn: () => void
 }
 
 interface FeedState extends PostState {
     id: number
+    comment: string
 }
 
 export default class PostFeedMap extends Component<acceptedProps, FeedState> {
@@ -19,30 +23,15 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
         this.state = {
             id: Infinity,
             post: [],
+            comment: '',
             postTitle: '',
             content: '',
         }
     }
 
-    deletePost = async (post: any) => {
-        try{
-            fetch(`http://localhost:3000/post/delete/${post.id}`, {
-                method: 'DELETE',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer {this.props.token}`
-                })
-            })
-            return this.props.getPost()
-        } catch (err) {
-            console.log(err)
-        }
-    
-    }
-
     render() {
         return(
-            <div>
+            <div className='flex justify-center flex-wrap'>
                 {this.props.postFeed.length > 0 ? (
                     <>
                     {this.props.postFeed.map((post: any, index: number) => {
@@ -50,14 +39,14 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
                             <div
                             key={index}
                             >
-                                <p>{post.posTitle}</p>
+                                <p>{post.postTitle}</p>
                                 <p>{post.content}
                                 <div>
                                     <button onClick={() => {
                                         this.props.PostEdit(post)
                                         this.props.updateOn()
                                     }}
-                                    >Edit/Remove
+                                    >Edit
                                     </button>
                                 </div>
                                 </p>
@@ -69,6 +58,32 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
                     <>
                         <h2>Share your thoughts about games!</h2>
                     </>
+                    
+                )}
+                {this.props.commentFeed.length > 0 ? (
+                    <>
+                     {this.props.commentFeed.map((comment: any, index: number) => {
+                        return (
+                            <div
+                            key={index}
+                            >
+                                <p>{comment.user}</p>
+                                <p>{comment.content}
+                                <div>
+                                    <button onClick={() => {
+                                        this.props.PostComment(comment)
+                                        //this.props.updateOn()
+                                    }}
+                                    >comment
+                                    </button>
+                                </div>
+                                </p>
+                            </div>
+                        )
+                    })}
+                    </>
+                ) : (
+                    <></>
                 )}
             </div>
         )

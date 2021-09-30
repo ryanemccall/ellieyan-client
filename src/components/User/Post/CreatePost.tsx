@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 type acceptedProps = {
     token: string 
     getPost: () => Promise<any>
+    getAllPost: () => Promise<any>
 }
 
 export interface PostState {
@@ -43,7 +44,7 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
                 postTitle: '',
                 content: '',
             }) //This will make the Post form blank again after submission
-            this.props.getPost() //This calls the post feed to show new post(and others)
+            this.props.getAllPost() //This calls the post feed to show new post(and others)
         } catch (err) {
             console.log(err)
         }

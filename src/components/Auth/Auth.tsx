@@ -53,9 +53,9 @@ export default class Auth extends Component<AuthProps, AuthState> {
     render() {
         return(
             <div>
-                <div>
-                    <img className='logo' src={logo} alt='logo'/>
-                    <h2 className='subTitle'>The social media platform for gamers</h2>
+                <div className='grid-cols-3 grid-rows-2 justify-center'>
+                    <img id='logo' src={logo} alt='logo'/>
+                    <h2 className='subtitle'>The social platform for Gamers</h2>
                 </div>
                 <div>
                     {this.Authorization()}
@@ -66,7 +66,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
                        
                     ) : (
                         <Router>
-                             <Link className='loginLink' to='' onClick={this.loginToggle}>Login!</Link>
+                             <Link className='loginLink' to='' onClick={this.loginToggle}>Have an account? Login!</Link>
                         </Router>
                        
                     )}

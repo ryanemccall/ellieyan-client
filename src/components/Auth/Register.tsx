@@ -50,15 +50,17 @@ export default class Register extends Component<RegisterProps, RegisterState> {
 
         render() {
             return (
-                <div>
+                <div className='w-full max-w-xs m-auto bg-green-100 rounded p-5'>
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <label htmlFor='username'>
+                            <label className='block mb-2 text-indigo-500'
+                            htmlFor='username'>
                                 <input
                                     id='username'
+                                    className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300'
                                     required
                                     type='text'
-                                    placeholder='Enter a Username'
+                                    placeholder='Username'
                                     minLength={7}
                                     maxLength={25}
                                     value={this.state.username}
@@ -68,13 +70,14 @@ export default class Register extends Component<RegisterProps, RegisterState> {
                             </label>
                         </div>
                         <div>
-                            <label htmlFor='email'>
+                            <label className='block mb-2 text-indigo-500' htmlFor='email'>
                                 <input
                                 id='email'
                                 required
+                                className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300'
                                 pattern='^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'
                                 type='text'
-                                placeholder='Enter your email'
+                                placeholder='Email'
                                 value={this.state.email}
                                 name='email'
                                 onChange={this.handleChange}
@@ -82,10 +85,11 @@ export default class Register extends Component<RegisterProps, RegisterState> {
                             </label>
                         </div>
                         <div>
-                        <label htmlFor='password'>
+                        <label className='block mb-2 text-indigo-500' htmlFor='password'>
                             <input
                             id='password'
                             required
+                            className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300'
                             type='password'
                             placeholder='Password'
                             pattern='^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$'
@@ -97,7 +101,7 @@ export default class Register extends Component<RegisterProps, RegisterState> {
                             />
                         </label>
                     </div>
-                        <button type='submit'>Register Now!</button>
+                        <button className='bg-green-700 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full'type='submit'>Register Now!</button>
                     </form>
                 </div>
             )
