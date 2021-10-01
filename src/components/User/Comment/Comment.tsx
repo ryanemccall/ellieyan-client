@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string 
@@ -24,7 +25,7 @@ export default class CreateComment extends Component<acceptedProps, CommentState
 
     newComment = async (postId: number) => {
         try {
-            const comment = await fetch(`http://localhost:3000/comment/post/${postId}`, {
+            const comment = await fetch(`${APIURL}/comment/post/${postId}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     comment: {

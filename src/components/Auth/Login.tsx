@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import APIURL from '../../helpers/enviroment'
 
 type AuthProps = {
     updateToken: (newToken: string) => void
@@ -23,7 +24,7 @@ export default class Login extends Component<AuthProps, LoginState>{
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
-        fetch('http://localhost:3000/user/login', {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({
                 username: this.state.username,

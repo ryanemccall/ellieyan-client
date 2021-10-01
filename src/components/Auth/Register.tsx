@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import APIURL from '../../helpers/enviroment'
 
 type RegisterProps = {
     updateToken: (newToken: string, Role: string) => void
@@ -24,7 +25,7 @@ export default class Register extends Component<RegisterProps, RegisterState> {
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
-        fetch('http://localhost:3000/user/register', {
+        fetch(`${APIURL}/user/register`, {
             method: 'POST',
             body: JSON.stringify({
                 username: this.state.username,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreatePost from './CreatePost';
 import PostFeedMap from './PostFeedMap';
 import UpdatePost from './UpdatePost';
+import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string
@@ -32,7 +33,7 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
     getAllPost = async () => {
         if (this.props.token) {
             try {
-                const feed = await fetch(`http://localhost:3000/post/all`, {
+                const feed = await fetch(`${APIURL}/post/all`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -50,7 +51,7 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
     getPost = async () => {
         if (this.props.token) {
             try {
-                const feed = await fetch(`http://localhost:3000/post/myPosts`, {
+                const feed = await fetch(`${APIURL}/post/myPosts`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -67,7 +68,7 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
     }
     deletePost = async (post: any) => {
         try{
-            fetch(`http://localhost:3000/post/delete/${post.id}`, {
+            fetch(`${APIURL}/post/delete/${post.id}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',

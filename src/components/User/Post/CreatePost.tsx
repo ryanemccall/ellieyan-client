@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string 
@@ -25,7 +26,7 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
     newPost = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault()
         try {
-            const post = await fetch(`http://localhost:3000/post/`, {
+            const post = await fetch(`${APIURL}/post/`, {
                 method: 'POST',
                 body: JSON.stringify({
                     post: {

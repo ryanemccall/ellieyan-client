@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PostState } from './CreatePost';
+//import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string
@@ -28,7 +29,7 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
             content: '',
         }
     }
-
+    //DELETE BUTTON ISNT WORKING IN THE UPDATE MIGHT JUST NEED TO ADDED IT HERE AS ITS OWN BUTTON
     render() {
         return(
             <div className='flex justify-center flex-wrap'>

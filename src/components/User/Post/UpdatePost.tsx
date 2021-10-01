@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap'
 import { PostState } from './CreatePost'
+import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string
@@ -29,7 +30,7 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
 
     editPost = async (id: number) => {
         try {
-            const updatedPost = await fetch(`http://localhost:3000/post/${this.props.PostEdit.id}`, {
+            const updatedPost = await fetch(`${APIURL}/post/${this.props.PostEdit.id}`, {
                 method: 'PUT',
                 headers: new Headers({
                     'Content-Type': 'application/json',

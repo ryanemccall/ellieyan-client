@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Logo from '../../assests/ellieyan.svg';
+import APIURL from '../../helpers/enviroment'
 //import Profile from '../User/Profile';
 
 type acceptedProps = {
@@ -21,7 +22,7 @@ export default class Home extends Component<acceptedProps, HomeState> {
     getProfile = async () => {
         if (this.props.token) {
             try {
-                const myProfile = await fetch(`http://localhost:3000/profile/`, {
+                const myProfile = await fetch(`${APIURL}/profile/`, {
                     method: "GET",
                     headers: new Headers({
                         "Content-Type": "application/json",
