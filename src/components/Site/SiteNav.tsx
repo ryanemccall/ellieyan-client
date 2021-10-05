@@ -90,7 +90,7 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
                                 <NavLink>
                                     <Router>
                                     <Link id='navLink' to='/favorites'>
-                                        Search
+                                        myGames
                                     </Link>
                                     </Router>
                                 </NavLink>

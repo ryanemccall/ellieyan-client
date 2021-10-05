@@ -60,7 +60,7 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
 
     render() {
         return (
-            <div className='bg-green-200 bg-opacity-50 max-w-xl mx-auto p-7 md: p-10 rounded-lg shadow w-full'>
+            <div className='bg-green-200 bg-opacity-70 max-w-xl mx-auto p-7 md: p-10 rounded-lg shadow w-full'>
                 <form className='space-y-4'onSubmit={this.newPost}>
                     <div>
                         <label htmlFor='postTitle'>

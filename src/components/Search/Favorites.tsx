@@ -113,7 +113,7 @@ export default class SearchAPI extends Component<acceptedProps, SearchState> {
     render(){
         return(
             <div>
-                <h3>Click to search for Shooter games! More Categories coming soon!!</h3>
+                <h3>Click for recommendations on Free Shooter Games! More Categories and games coming soon!</h3>
                 <button 
                 className='bg-green-500 hover:bg-green-400 mb-2 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded mx-4'
                 onClick={()=> {
@@ -124,7 +124,7 @@ export default class SearchAPI extends Component<acceptedProps, SearchState> {
                 onClick={() => {
                     this.getFavs()
                 }}>Favorites List</button>
-                <div className='grid gap-4 grid-cols-4'>
+                <div className='grid gap-4 sm:gap-6 md:gap-8 p-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {this.state.gameData ? this.state.gameData.map((data: any, index: any) => {
                         return <Container>
                             <Card id="allCards">

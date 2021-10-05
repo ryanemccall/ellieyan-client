@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Auth from './components/Auth/Auth';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {  Route, Switch } from 'react-router-dom';
 import Footer from './components/Site/Footer';
 import Home from './components/Site/Home';
 import AdminView from './components/Site/AdminView';
@@ -67,7 +67,7 @@ export default class App extends Component<{}, userTypes> {
 
   render() {
     return (
-      <div className='App'>
+        <div className='App'>
         {this.state.token  && (
           <SiteNav
             logout={this.clearToken}
@@ -75,22 +75,20 @@ export default class App extends Component<{}, userTypes> {
             Role={this.state.Role}
             />
         )}
-        <Router>
-        <Switch>
-          <Route exact path='/'>
-            {this.protectedViews}
-          </Route>
-           <Route exact path='/post'>
-            <PostIndex token={this.state.token} />
-          </Route>
-          <Route exact path='/admin' component={AdminView}>
-            {this.protectedAdminViews}
-          </Route>
-          <Route exact path='/favorites'>
-            <Favorites token={this.state.token} />
-          </Route>
-        </Switch> 
-        </Router>
+          <Switch>
+            <Route exact path='/'>
+              {this.protectedViews}
+            </Route>
+            <Route exact path='/post'>
+              <PostIndex token={this.state.token} />
+            </Route>
+            <Route exact path='/admin' component={AdminView}>
+              {this.protectedAdminViews}
+            </Route>
+            <Route exact path='/favorites'>
+              <Favorites token={this.state.token} />
+            </Route>
+          </Switch> 
         <Footer/>
       </div>
     )

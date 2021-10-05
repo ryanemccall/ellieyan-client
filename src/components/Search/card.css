@@ -1,6 +1,7 @@
 #allCards {
     color: #010402;
-    width: 25rem;
+    max-width: 25rem;
+    margin: auto;
 }
 
 #cardImg {

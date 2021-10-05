@@ -3,6 +3,9 @@
     margin-right: 35px;
     color: #D175B7;
 }
+#logoutBtn:hover {
+    color: #F4F4F9;
+}
 
 #navLogo {
     background: #F4F4F9;

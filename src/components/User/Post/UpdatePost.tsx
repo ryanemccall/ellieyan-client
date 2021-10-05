@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap'
 import { PostState } from './CreatePost'
+import './post.css'
 import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
@@ -65,13 +66,14 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
     render() {
         return (
             <div>
-                <Modal isOpen={this.state.ModalOpen} toggle={this.toggle}>
-                    <ModalHeader toggle= {this.toggle}>Update your thoughts</ModalHeader>
-                    <ModalBody>
+                <Modal id='Modal' isOpen={this.state.ModalOpen} toggle={this.toggle}>
+                    <ModalHeader id='modalHeader' toggle={this.toggle}>Update your thoughts</ModalHeader>
+                    <ModalBody id='modalBody'>
                         <div>
                             <label htmlFor='postTitle'>
                                 <input
-                                id='postTitle'
+                                id='modalTitle'
+                                className='border py-2 px-3 text-grey-darkest md:mr-2'
                                 type='text'
                                 value={this.state.postTitle}
                                 placeholder='Title'
@@ -82,7 +84,8 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                         <div>
                             <label htmlFor='content'>
                                 <input
-                                id='content'
+                                id='modalContent'
+                                className='border py-2 px-3 text-grey-darkest md:mr-2'
                                 type='text'
                                 value={this.state.content}
                                 placeholder="What's on your mind, gamer?"
@@ -93,19 +96,17 @@ export default class UpdatePost extends Component<acceptedProps, PostEditState> 
                     </ModalBody>
                     <ModalFooter>
                         <button 
+                        className='bg-green-700 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full'
                         onClick={(id: any) => {
                             this.editPost(id)
                             this.toggle()
                         }}>
                             Update
                         </button>
-                        <button
-                        onClick={(post: any) => {
+                        {/* <button onClick={(post: any) => {
                             this.props.deletePost(post)
                             this.toggle()
-                        }}>
-                            Delete Post
-                        </button>
+                        }}>Remove Post</button> */}
                     </ModalFooter>
                 </Modal>
             </div>

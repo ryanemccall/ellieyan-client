@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { PostState } from './CreatePost';
 import './post.css'
-//import APIURL from '../../../helpers/enviroment'
+import { Card, CardBody, CardTitle, CardText, CardFooter} from 'reactstrap';
+import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
     token: string
@@ -30,28 +31,62 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
             content: '',
         }
     }
-    //DELETE BUTTON ISNT WORKING IN THE UPDATE MIGHT JUST NEED TO ADDED IT HERE AS ITS OWN BUTTON
+    deletePost = async (post: any) => {
+        //id = post.id might work
+        try{
+            fetch(`${APIURL}/post/delete/${post.id}`, {
+                method: 'DELETE',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.props.token}`
+                })
+            })
+            return this.props.getPost()
+        } catch (err) {
+            console.log(err)
+        }
+    
+    }
+    //DELETE BUTTON ISNT WORKING IN THE UPDATE MIGHT JUST NEED TO ADD IT HERE AS ITS OWN BUTTON
     render() {
         return(
-            <div className='flex justify-center mt-8'>
+            <div className='container mx-auto px-4 justify-self-center'>
                 {this.props.postFeed.length > 0 ? (
                     <>
                     {this.props.postFeed.map((post: any, index: number) => {
                         return (
-                            <div
+                            <div 
+                            className='container mx-auto'
                             key={index}
                             >
-                                <p>{post.postTitle}</p>
-                                <p>{post.content}
-                                <div>
-                                    <button onClick={() => {
+                               <Card id='postCards'>
+                                   <CardBody>
+                                       <CardTitle>
+                                       <h3 id='postTitle' className='display-3'>{post.postTitle}</h3>
+                                       </CardTitle>
+                                       <CardText>
+                                       <p id='content' className='lead'>{post.content} </p>
+                                       </CardText>
+                                   </CardBody>
+                                   <CardFooter>
+                                   <button
+                                    className='bg-green-700 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full'
+                                    onClick={() => {
                                         this.props.PostEdit(post)
                                         this.props.updateOn()
                                     }}
                                     >Edit
                                     </button>
-                                </div>
-                                </p>
+                                    <button
+                                    className='bg-red-700 hover:bg-red-300 text-white font-bold py-2 px-4 rounded-full'
+                                    onClick={() => {
+                                        this.deletePost(post)
+                                    }}
+                                    >
+                                    Remove
+                                    </button>
+                                   </CardFooter>
+                               </Card>
                             </div>
                         )
                     })}

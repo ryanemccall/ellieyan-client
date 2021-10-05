@@ -67,12 +67,13 @@ export default class PostIndex extends Component<acceptedProps, PostIndexState> 
         }
     }
     deletePost = async (post: any) => {
+        //id = post.id might work
         try{
             fetch(`${APIURL}/post/delete/${post.id}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer {this.props.token}`
+                    Authorization: `Bearer ${this.props.token}`
                 })
             })
             return this.getPost()
