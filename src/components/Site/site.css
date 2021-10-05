@@ -1,0 +1,26 @@
+#logoutBtn {
+    align-items: right;
+    margin-right: 35px;
+    color: #D175B7;
+}
+
+#navLogo {
+    background: #F4F4F9;
+    margin-left: 35px;
+    border-radius: 25px;
+    width: 40px;
+}
+
+#navLink {
+    text-decoration: none;
+    color: #F4F4F9;
+    
+}
+
+#homeLogo {
+  justify-content: top;
+  margin: auto;
+  
+   
+}
+

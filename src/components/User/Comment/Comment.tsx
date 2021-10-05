@@ -47,4 +47,52 @@ export default class CreateComment extends Component<acceptedProps, CommentState
             console.log(err)
         }
     }
+
+    getComments  = async (postId: number) => {
+        try {
+            const comments = await fetch(`${APIURL}/comment/all/post/${postId}`, {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.props.token}`,
+                }),
+            })
+            const res = await comments.json()
+            this.setState({ comment: res })
+            return res
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    updateComment = async (id: number, userId: number, postId: number) => {
+        try {
+            const newComment = await fetch(`${APIURL}/comment/post/${postId}/user/${userId}/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    comment: {
+                        content: this.state.content,
+                    }
+                }),
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.props.token}`,
+                }),
+            })
+            await newComment.json()
+            
+            this.setState({
+                content: '',
+            }) //Makes comment box blank again
+            this.props.getPost() //This calls the post feed to show new post(and others)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    render(){
+        return (
+            <></>
+        )
+    }
 }

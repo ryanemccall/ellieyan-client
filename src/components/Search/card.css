@@ -1,0 +1,61 @@
+#allCards {
+    color: #010402;
+    width: 25rem;
+}
+
+#cardImg {
+    max-width: 100%;
+    height: auto;
+}
+
+#title {
+    margin: 10px;
+    font-weight: 700;
+    font-family: fantasy;
+    font-size: 28px;
+    color: #010402;
+    text-align: center;
+}
+
+#genre {
+    margin: 5px;
+    font-weight: 500;
+    font-family: fantasy;
+    font-size: 22px;
+    color: #010402;
+    text-align: center;
+}
+
+#platform {
+    margin: 5px;
+    font-weight: 500;
+    font-family: fantasy;
+    font-size: 22px;
+    color: #010402;
+    text-align: center;
+}
+
+#description {
+    margin: 5px;
+    font-weight: 500;
+    font-family: fantasy;
+    font-size: 22px;
+    color: #1C2C54;
+    text-align: center;
+}
+
+#gameURL {
+    font-family: fantasy;
+    font-size: 17px;
+    color: #010402;
+    text-align: center;
+    text-decoration: none;
+}
+#gameURL:hover {
+    color: #D175B7
+}
+
+#cardBtn {
+    font-family: fantasy;
+    font-size: large;
+}

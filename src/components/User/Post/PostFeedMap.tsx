@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PostState } from './CreatePost';
+import './post.css'
 //import APIURL from '../../../helpers/enviroment'
 
 type acceptedProps = {
@@ -32,7 +33,7 @@ export default class PostFeedMap extends Component<acceptedProps, FeedState> {
     //DELETE BUTTON ISNT WORKING IN THE UPDATE MIGHT JUST NEED TO ADDED IT HERE AS ITS OWN BUTTON
     render() {
         return(
-            <div className='flex justify-center flex-wrap'>
+            <div className='flex justify-center mt-8'>
                 {this.props.postFeed.length > 0 ? (
                     <>
                     {this.props.postFeed.map((post: any, index: number) => {

@@ -7,6 +7,7 @@ import Home from './components/Site/Home';
 import AdminView from './components/Site/AdminView';
 import SiteNav from './components/Site/SiteNav';
 import PostIndex from './components/User/Post/PostIndex';
+import Favorites from './components/Search/Favorites';
 
 type userTypes = {
   token: string
@@ -84,6 +85,9 @@ export default class App extends Component<{}, userTypes> {
           </Route>
           <Route exact path='/admin' component={AdminView}>
             {this.protectedAdminViews}
+          </Route>
+          <Route exact path='/favorites'>
+            <Favorites token={this.state.token} />
           </Route>
         </Switch> 
         </Router>

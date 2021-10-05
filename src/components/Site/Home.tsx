@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Logo from '../../assests/ellieyan.svg';
 import APIURL from '../../helpers/enviroment'
+import './site.css'
 //import Profile from '../User/Profile';
 
 type acceptedProps = {
@@ -39,13 +40,15 @@ export default class Home extends Component<acceptedProps, HomeState> {
 
     render() {
         return (
-            <div className='container mx-auto px-6 content-center py-20'>
-                <img className='w-30 mx-auto-mb-1 content-center' src={Logo} alt='logo'/>
-                <h1 className='header'> Welcome to ELLIEYAN! </h1>
-                <p className='subHeader'>Share your thoughts with others gamers, talk about your favorite characters, favorite games, least favorite games, and have discussion with fellow gamers about what you love most.</p>
-                <button className='profileBtn'>Create your Profile</button>
-                <button className='myFeed'>See my Posts</button>
-                <button className='Feed'>See Community</button>
+            <div className='container mx-auto'>
+                <img id='homeLogo' src={Logo} alt='logo'/>
+                <h1 className='antialiased tracking-wide font-medium leading-10'> Welcome to ELLIEYAN! </h1>
+                <br />
+                <p className='subpixel-antialiased tracking-tight font-light leading-snug'>Share your thoughts with others gamers, talk about your favorite characters, favorite games, least favorite games, and have discussion with fellow gamers about what you love most.</p>
+                <br />
+                <button className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded mx-4'>Create your Profile </button>
+                <button className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded mx-4'> See my Posts </button>
+                <button className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded mx-4'> See Community </button>
                 {/* <Profile token={this.props.token} /> */}
             </div>
         )

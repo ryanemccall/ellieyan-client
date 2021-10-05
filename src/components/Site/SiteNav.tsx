@@ -11,6 +11,7 @@ import {
     NavbarBrand,
 } from 'reactstrap';
 import Logo from '../../assests/ellieyan.svg';
+import './site.css'
 
 type acceptedProps = {
     token: string
@@ -38,7 +39,7 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
         ) : (
             <Router>
                 <Link to='/'>
-                <button onClick={this.props.logout}>Logout</button>
+                <button id='logoutBtn' onClick={this.props.logout}>Logout</button>
             </Link>
             </Router>
             
@@ -60,17 +61,17 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
                     <NavbarBrand>
                         <Router>
                         <Link to='/'>
-                            <img src={Logo} alt='logo' height='28px' width='28px' />
+                            <img id='navLogo'src={Logo} alt='logo' height='28px' width='28px' />
                         </Link>
                         </Router>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav navbar>
+                        <Nav className='mr-auto' navbar>
                             <NavItem>
                                 <NavLink>
                                    <Router>
-                                        <Link to='/'>
+                                        <Link id='navLink' to='/'>
                                         Home
                                     </Link>
                                     </Router>
@@ -79,7 +80,7 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
                             <NavItem>
                                 <NavLink>
                                     <Router>
-                                    <Link to='/post'>
+                                    <Link id='navLink' to='/post'>
                                         myFeed
                                     </Link>
                                     </Router>
@@ -88,7 +89,16 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
                             <NavItem>
                                 <NavLink>
                                     <Router>
-                                    <Link to='/admin'>
+                                    <Link id='navLink' to='/favorites'>
+                                        Search
+                                    </Link>
+                                    </Router>
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink>
+                                    <Router>
+                                    <Link id='navLink' to='/admin'>
                                         {this.adminNavPanel()}
                                     </Link>
                                     </Router>

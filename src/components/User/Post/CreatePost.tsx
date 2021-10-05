@@ -45,7 +45,7 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
                 postTitle: '',
                 content: '',
             }) //This will make the Post form blank again after submission
-            this.props.getAllPost() //This calls the post feed to show new post(and others)
+            this.props.getPost() //This calls the post feed to show new post(and others)
         } catch (err) {
             console.log(err)
         }
@@ -60,33 +60,36 @@ export default class CreatePost extends Component<acceptedProps, PostState> {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.newPost}>
+            <div className='bg-green-200 bg-opacity-50 max-w-xl mx-auto p-7 md: p-10 rounded-lg shadow w-full'>
+                <form className='space-y-4'onSubmit={this.newPost}>
                     <div>
                         <label htmlFor='postTitle'>
-                            <input
+                           Title: <input
                             id='postTitle'
                             type='text'
+                            className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300 rounded'
                             value={this.state.postTitle}
                             name='postTitle'
-                            placeholder='What is on your mind?'
+                            placeholder='title of game'
                             onChange={this.handleChange}
                             />
                         </label>
                     </div>
                     <div>
                         <label htmlFor='content'>
-                            <input
+                            Blog: <input
                             id='content'
                             type='text'
+                            className='w-full p-2 mb-6 text-blue-900 border-b-2 border-indigo-500 outline-none focus:bg-gray-300 rounded'
                             value={this.state.content}
                             name='content'
-                            placeholder='What do you think about this game?'
+                            placeholder="What's on your mind?"
                             onChange={e => this.setState({ content: e.target.value })}
                             />
                         </label>
                     </div>
                     <button
+                    className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded mx-4'
                     type='submit'
                     >Post</button>
                 </form>
