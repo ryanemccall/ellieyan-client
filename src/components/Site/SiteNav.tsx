@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -37,12 +37,9 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
         return localStorage.getItem('sessionToken') === null ? (
             ''
         ) : (
-            <Router>
                 <Link to='/'>
                 <button id='logoutBtn' onClick={this.props.logout}>Logout</button>
-            </Link>
-            </Router>
-            
+            </Link>            
         )
     }
 
@@ -59,49 +56,39 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
             <div>
                 <Navbar color='dark' dark expand='md'>
                     <NavbarBrand>
-                        <Router>
                         <Link to='/'>
                             <img id='navLogo'src={Logo} alt='logo' height='28px' width='28px' />
                         </Link>
-                        </Router>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className='mr-auto' navbar>
                             <NavItem>
                                 <NavLink>
-                                   <Router>
                                         <Link id='navLink' to='/'>
                                         Home
                                     </Link>
-                                    </Router>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink>
-                                    <Router>
                                     <Link id='navLink' to='/post'>
                                         myFeed
                                     </Link>
-                                    </Router>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink>
-                                    <Router>
                                     <Link id='navLink' to='/favorites'>
                                         myGames
                                     </Link>
-                                    </Router>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink>
-                                    <Router>
                                     <Link id='navLink' to='/admin'>
                                         {this.adminNavPanel()}
                                     </Link>
-                                    </Router>
                                 </NavLink>
                             </NavItem>
                         </Nav>
