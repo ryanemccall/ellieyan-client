@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Getting Started with ELLIEYAN
+Version 1(current):
+Ellieyan is a social platform for gamers. Users can sign up for an account, Can blog posts about games and game related topics, There is also a search feature that searches the Free to Game Database (https://www.freetogame.com/api-doc) for free games. The search feature provides details of platforms, genre, cover art, and even a link to play the game. Users can then favorite them adding them to a favorites list. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployed Site:
+The current deployed site can be found on heroku at  https://ellieyan.herokuapp.com/
+
+## About ELLIEYAN
+Ellieyan is the client side of a PERN stack with full CRUD 
+It features:
+* React
+* TypeScript
+* Reactstrap
+* Tailwind CSS
 
 ## Available Scripts
 
