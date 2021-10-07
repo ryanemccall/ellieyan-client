@@ -19,7 +19,7 @@ type acceptedProps = {
     Role: string
 }
 
-type toggleState = {
+type toggleState = { 
     isOpen: boolean
 }
 
@@ -37,7 +37,7 @@ export default class Sitebar extends Component<acceptedProps, toggleState> {
         return localStorage.getItem('sessionToken') === null ? (
             ''
         ) : (
-                <Link to='/'>
+            <Link to='/'>
                 <button id='logoutBtn' onClick={this.props.logout}>Logout</button>
             </Link>            
         )
